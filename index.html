@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>House Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .form-group button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>House Price Prediction</h1>
+    <form id="predictionForm">
+      <div class="form-group">
+        <label for="area">Area (in square feet):</label>
+        <input type="number" id="area" name="area" required>
+      </div>
+      <div class="form-group">
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+      </div>
+      <div class="form-group">
+        <label for="bathrooms">Number of Bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age of the House (in years):</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Predict Price</button>
+      </div>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById('predictionForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page refresh
+
+      // Fetch form values
+      var area = parseFloat(document.getElementById('area').value);
+      var bedrooms = parseFloat(document.getElementById('bedrooms').value);
+      var bathrooms = parseFloat(document.getElementById('bathrooms').value);
+      var age = parseFloat(document.getElementById('age').value);
+
+      // Perform house price prediction calculation (sample formula)
+      var price = area * 100 + bedrooms * 5000 + bathrooms * 3000 - age * 200;
+
+      // Display the predicted price
+      document.getElementById('result').innerHTML = 'Predicted Price: $' + price.toFixed(2);
+    });
+  </script>
+</body>
+</html>
